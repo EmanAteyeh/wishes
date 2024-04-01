@@ -46,6 +46,15 @@ namespace InventoryManagement
             return newName;
         }
 
+        public void ViewAllProducts()
+        {
+            Console.WriteLine("\nAll products:");
+            foreach (var product in products)
+            {
+                Console.WriteLine($"ID: {product.id}, Name: {product.name}, Price: {product.productPrice}, Quantity: {product.quantity}");
+            }
+        }
+
 
     }
 }
