@@ -55,6 +55,88 @@ namespace InventoryManagement
             }
         }
 
+        public void EditProduct()
+        {
+            Product p = findProduct();
+            if (p != null)
+            {
+                Console.WriteLine("What would you like to update?");
+                Console.WriteLine("1. Name");
+                Console.WriteLine("2. Price");
+                Console.WriteLine("3. Quantity");
+                Console.WriteLine("4. All of the above");
+
+                Console.Write("Enter your choice: ");
+                int choice = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write($"Enter a new name for {p.name}: ");
+                        p.name = Console.ReadLine();
+                        break;
+                    case 2:
+                        Console.Write("Enter new price: ");
+                        double price = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Select currency:");
+                        foreach (Currency currency in Enum.GetValues(typeof(Currency)))
+                        {
+                            Console.WriteLine($"{(int)currency}. {currency}");
+                        }
+                        Console.Write("Enter currency: ");
+                        int currencyChoice = int.Parse(Console.ReadLine());
+                        Currency selectedCurrency = (Currency)currencyChoice;
+                        p.price = new Price(price, selectedCurrency);
+                        break;
+                    case 3:
+                        Console.Write("Enter new quantity: ");
+                        p.quantity = int.Parse(Console.ReadLine());
+                        break;
+                    case 4:
+                        Console.Write("Enter new name: ");
+                        p.name = Console.ReadLine();
+                        Console.Write("Enter new price: ");
+                        double newPrice = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Select currency:");
+                        foreach (Currency currency in Enum.GetValues(typeof(Currency)))
+                        {
+                            Console.WriteLine($"{(int)currency}. {currency}");
+                        }
+                        Console.Write("Enter currency: ");
+                        int newCurrencyChoice = int.Parse(Console.ReadLine());
+                        Currency newSelectedCurrency = (Currency)newCurrencyChoice;
+                        p.price = new Price(newPrice, newSelectedCurrency);
+
+                        Console.Write("Enter new quantity: ");
+                        p.quantity = int.Parse(Console.ReadLine());
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
+
+                Console.WriteLine("Product updated successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Product not found.");
+            }
+        }
+        public Product findProduct()
+        {
+            Console.Write("Enter product name: ");
+            string productName = Console.ReadLine();
+            Product product = products.Find(p => p.name == productName);
+            return product;
+        }
+        public Product findProduct(string productName)
+        {
+
+            Product product = products.Find(p => p.name == productName);
+            return product;
+        } 
+
+
 
     }
 }
