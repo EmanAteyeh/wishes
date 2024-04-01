@@ -19,7 +19,7 @@ namespace InventoryManagement
         }
         public override string ToString()
         {
-            return $"{ItemPrice} {Currency}";
+            return $"{ItemPrice} {Currency}"; //////
         }
 
     }

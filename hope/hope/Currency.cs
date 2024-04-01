@@ -10,6 +10,7 @@ namespace InventoryManagement
     {
         USD_Dollar,
         Euro,
-        UK_Pound,
+        UK_Pound, 
+        SE_Krouna, 
     }
 }
