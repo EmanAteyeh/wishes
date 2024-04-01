@@ -134,7 +134,23 @@ namespace InventoryManagement
 
             Product product = products.Find(p => p.name == productName);
             return product;
-        } 
+        }
+        public void DeleteProduct()
+        {
+            Console.WriteLine("\nDeleting a product:");
+            Console.Write("Enter product name: ");
+            string productName = Console.ReadLine();
+            Product product = products.Find(p => p.name == productName);
+            if (product != null)
+            {
+                products.Remove(product);
+                Console.WriteLine("Product deleted successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Product not found.");
+            }
+        }
 
 
 
