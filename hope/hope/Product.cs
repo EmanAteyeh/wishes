@@ -31,7 +31,7 @@ namespace InventoryManagement
             get { return Name; }
             set
             {
-                Name = value.Length > 50 ? value[..50] : value; //truncate the string if its length execeeds 50 characters 
+                Name = value.Length > 50 ? value[..50] : value; //truncate the string if its length execeeds 50 characters.  
             }
         }
 
